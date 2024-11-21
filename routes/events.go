@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Logic for fetching a Events list
+// Logic for fetching an Events list
 func getEvents(context *gin.Context) {
 	events, err := models.GetAllEvents()
 
@@ -37,7 +37,7 @@ func getEvent(context *gin.Context) {
 	context.JSON(http.StatusOK, event)
 }
 
-// Logic for creating a Event
+// Logic for creating an Event
 func createPost(context *gin.Context) {
 	var event models.Event
 	err := context.ShouldBindJSON(&event)
@@ -56,4 +56,38 @@ func createPost(context *gin.Context) {
 		return
 	}
 	context.JSON(http.StatusCreated, gin.H{"message": "Event created!", "event": event})
+}
+
+// Logic for upading an Event
+func updateEvent(context *gin.Context) {
+	eventId, err := strconv.ParseInt(context.Param("id"), 10, 64)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"message": "Invalid event id."})
+		return
+	}
+
+	_, err = models.GetEventByID(eventId)
+
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"message": "Could not fetch events. Try again later."})
+		return
+	}
+
+	var updatedEvent models.Event
+	err = context.ShouldBindJSON(&updatedEvent)
+
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"message": "Something went wrong!!", "error": err})
+		return
+	}
+
+	updatedEvent.ID = eventId
+	err = updatedEvent.Update()
+
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"message": "Could not update event.", "error": err})
+		return
+	}
+
+	context.JSON(http.StatusOK, gin.H{"message": "Event updated successfully!"})
 }

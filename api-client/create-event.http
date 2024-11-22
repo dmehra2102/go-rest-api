@@ -2,8 +2,8 @@ POST http://localhost:8080/events
 Content-Type: application/json
 
 {
-    "name" : "Best event",
-    "description":"A Best event",
-    "location" : "A Best location",
-    "dateTime" : "2008-01-02T15:04:05Z"
+    "name" : "Test Match event",
+    "description":"A Best test match that you will ever witnesed",
+    "location" : "Oconoa, Australia",
+    "dateTime" : "2024-01-02T15:04:05Z"
 }

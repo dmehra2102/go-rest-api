@@ -47,8 +47,7 @@ func createPost(context *gin.Context) {
 		return
 	}
 
-	event.ID = 1
-	event.UserId = 12
+	event.UserId = context.GetInt64("userId")
 
 	err = event.Save()
 	if err != nil {

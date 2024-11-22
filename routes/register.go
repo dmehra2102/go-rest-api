@@ -43,8 +43,12 @@ func cancelRegisteration(context *gin.Context) {
 		return
 	}
 
-	var event models.Event
-	event.ID = eventId
+	event, err := models.GetEventByID(eventId)
+
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"message": "Could not fetch event."})
+		return
+	}
 
 	err = event.CancelRegistration(userId)
 

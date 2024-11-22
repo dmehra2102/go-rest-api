@@ -1,10 +1,10 @@
 POST http://localhost:8080/events
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlZXBhbnNodUBnbWFpbC5jb20iLCJleHAiOjE3MzIyNTY5MzMsInVzZXJJZCI6MX0.dkIadN9CG6gOyvUhDXvMcTOwlmG6-B9i9zpMud_czlw
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1laHJhZGVlcGFuc2h1QGdtYWlsLmNvbSIsImV4cCI6MTczMjI2MDEyMCwidXNlcklkIjoyfQ.ZX88Bbso9jogY6lrVF4GJ2DRrc59bOrI0aZtjVc89d8
 
 {
-    "name" : "Test Match event",
-    "description":"A Best test match that you will ever witnesed",
-    "location" : "Oconoa, Australia",
-    "dateTime" : "2024-01-02T15:04:05Z"
+    "name" : "Test Match 12 event",
+    "description":"A Best test match 12 that you will ever witnesed",
+    "location" : "Melbourne, Australia",
+    "dateTime" : "2024-08-02T15:04:05Z"
 }
